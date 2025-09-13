@@ -9,7 +9,7 @@ import { mensUpload } from '../utils/multerConfig.js';
 const menRouter = express.Router();
 
 // Create men 
-menRouter.post('/create-men',mensUpload.single('image'), createmen);
+menRouter.post('/create-men', mensUpload.array('images', 5), createmen)
 
 // Get all men 
 menRouter.get('/get-men', getAllmen);

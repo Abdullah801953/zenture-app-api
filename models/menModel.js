@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const menSchema = new mongoose.Schema({
   name: {
@@ -25,9 +25,19 @@ const menSchema = new mongoose.Schema({
     type: String,
     trim: true
   }],
-  image: {
+  images: [{
+    type: String
+  }],
+  colors: [{
+    type: String
+  }],
+  sizes: [{
     type: String,
-    required: true
+    enum: ['S', 'M', 'L', 'XL', 'XXL']
+  }],
+  description: {
+    type: String,
+    trim: true
   },
   isPopular: {
     type: Boolean,
@@ -43,6 +53,6 @@ const menSchema = new mongoose.Schema({
   }
 }, {
   timestamps: true
-});
+})
 
-export default mongoose.model('men', menSchema);
+export default mongoose.model('men', menSchema)

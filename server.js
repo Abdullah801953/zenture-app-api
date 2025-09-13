@@ -17,12 +17,22 @@ import menRouter from "./routes/men.route.js";
 import womenRouter from "./routes/women.route.js";
 import kidRouter from "./routes/kids.route.js";
 import trendingRouter from "./routes/trending.route.js";
+import shoeRouter from "./routes/shoes.route.js";
+import orderRouter from "./routes/order.route.js";
+
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const port = process.env.PORT || 5000;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(express.json()); 
 app.use(cors());
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // db connection
 connectDb();
@@ -43,6 +53,8 @@ app.use('/api/men',menRouter)
 app.use('/api/women',womenRouter)
 app.use('/api/kid',kidRouter)
 app.use('/api/trending',trendingRouter)
+app.use('/api/shoes',shoeRouter)
+app.use('/api/order',orderRouter)
 
 
 app.get("/", (req, res) => {

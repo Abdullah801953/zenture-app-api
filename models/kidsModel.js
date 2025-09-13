@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const kidSchema = new mongoose.Schema({
-  name: {
+    name: {
     type: String,
     required: true,
     trim: true
@@ -25,9 +25,19 @@ const kidSchema = new mongoose.Schema({
     type: String,
     trim: true
   }],
-  image: {
+  images: [{
+    type: String
+  }],
+  colors: [{
+    type: String
+  }],
+  sizes: [{
     type: String,
-    required: true
+    enum: ['S', 'M', 'L', 'XL', 'XXL']
+  }],
+  description: {
+    type: String,
+    trim: true
   },
   isPopular: {
     type: Boolean,
@@ -43,6 +53,6 @@ const kidSchema = new mongoose.Schema({
   }
 }, {
   timestamps: true
-});
+})
 
 export default mongoose.model('kid', kidSchema);

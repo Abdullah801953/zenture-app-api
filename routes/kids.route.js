@@ -9,7 +9,7 @@ import { kidsUpload } from '../utils/multerConfig.js';
 const kidRouter = express.Router();
 
 // Create kid 
-kidRouter.post('/create-kid',kidsUpload.single('image'), createkid);
+kidRouter.post('/create-kid',kidsUpload.array('images', 5), createkid);
 
 // Get all kid 
 kidRouter.get('/get-kid', getAllkid);

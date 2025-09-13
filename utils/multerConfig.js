@@ -45,5 +45,6 @@ export const shoesUpload = createMulterConfig('shoes');
 export const trendingsUpload = createMulterConfig('trendings');
 export const womensUpload = createMulterConfig('womens');
 export const productCategoryUpload=createMulterConfig('product_categories')
+export const productDetailImageUpload=createMulterConfig('products_detail_image')
 
 export default createMulterConfig;

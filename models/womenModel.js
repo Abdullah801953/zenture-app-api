@@ -1,48 +1,69 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const womenSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true
+const womenSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+    currency: {
+      type: String,
+      default: "Rs",
+      enum: ["Rs", "$", "€", "£"],
+    },
+    duration: {
+      type: String,
+      required: true,
+      enum: ["Month", "Quarter", "Year", "Lifetime"],
+    },
+    features: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
+    images: [
+      {
+        type: String,
+      },
+    ],
+    colors: [
+      {
+        type: String,
+      },
+    ],
+    sizes: [
+      {
+        type: String,
+        enum: ["S", "M", "L", "XL", "XXL"],
+      },
+    ],
+    description: {
+      type: String,
+      trim: true,
+    },
+    isPopular: {
+      type: Boolean,
+      default: false,
+    },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
+    order: {
+      type: Number,
+      default: 0,
+    },
   },
-  price: {
-    type: Number,
-    required: true,
-    min: 0
-  },
-  currency: {
-    type: String,
-    default: 'Rs',
-    enum: ['Rs', '$', '€', '£']
-  },
-  duration: {
-    type: String,
-    required: true,
-    enum: ['Month', 'Quarter', 'Year', 'Lifetime']
-  },
-  features: [{
-    type: String,
-    trim: true
-  }],
-  image: {
-    type: String,
-    required: true
-  },
-  isPopular: {
-    type: Boolean,
-    default: false
-  },
-  isActive: {
-    type: Boolean,
-    default: true
-  },
-  order: {
-    type: Number,
-    default: 0
+  {
+    timestamps: true,
   }
-}, {
-  timestamps: true
-});
+);
 
-export default mongoose.model('women', womenSchema);
+export default mongoose.model("women", womenSchema);

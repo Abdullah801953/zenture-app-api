@@ -9,7 +9,7 @@ import { womensUpload } from '../utils/multerConfig.js';
 const womenRouter = express.Router();
 
 // Create women 
-womenRouter.post('/create-women',womensUpload.single('image'), createwomen);
+womenRouter.post('/create-women',womensUpload.array('images', 5), createwomen);
 
 // Get all women 
 womenRouter.get('/get-women', getAllwomen);

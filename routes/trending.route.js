@@ -9,7 +9,7 @@ import { trendingsUpload } from '../utils/multerConfig.js';
 const trendingRouter = express.Router();
 
 // Create trending 
-trendingRouter.post('/create-trending',trendingsUpload.single('image'), createtrending);
+trendingRouter.post('/create-trending',trendingsUpload.array('images', 5), createtrending);
 
 // Get all trending 
 trendingRouter.get('/get-trending', getAlltrending);
